@@ -1,8 +1,6 @@
-# Pretty bad name, going to change later
+# Anki Forge
 
-From a transcript of a classs, generate anki slides.
+Generate anki cards from transcripts, notes, etc.
 
-python -m venv note_llm
-source note_llm/bin/activate
-
-pip install pydantic openai 
+I do generate the cards by using `pydantic` and a bit of prompt
+engineering. 
