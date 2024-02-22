@@ -15,7 +15,6 @@ def anki_cards_to_csv(merged_anki_card_lists, csv_file_path):
 
     with open(csv_file_path, 'w', newline='') as csv_file:
         csv_writer = csv.writer(csv_file)
-        csv_writer.writerow(['question', 'answer'])
 
         for anki_card_list in merged_anki_card_lists:
             for card in anki_card_list.cards:
