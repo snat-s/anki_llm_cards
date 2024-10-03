@@ -6,6 +6,8 @@
     <title>Processing Anki Cards</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script data-goatcounter="https://ankiforge.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
     <script>
         function checkStatus() {
             $.getJSON('/status/' + '{{ task_id }}', function(data) {
