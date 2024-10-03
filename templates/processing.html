@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Processing Anki Cards</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        function checkStatus() {
+            $.getJSON('/status/' + '{{ task_id }}', function(data) {
+                $('#status').text(data.status);
+                if (data.state === 'SUCCESS') {
+                    $('#download-link').removeClass('hidden');
+                    $('#status-container').removeClass('bg-yellow-100').addClass('bg-green-100');
+                } else {
+                    setTimeout(checkStatus, 2000);  // Check again in 2 seconds
+                }
+            });
+        }
+        $(document).ready(function() {
+            checkStatus();
+        });
+    </script>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+    <div class="bg-white p-8 rounded-lg shadow-md max-w-md w-full">
+        <h1 class="text-3xl font-bold mb-6 text-center text-gray-800">Processing Anki Cards</h1>
+        <div id="status-container" class="bg-yellow-100 rounded-lg p-4 mb-6">
+            <p class="text-center">
+                Status: <span id="status" class="font-semibold">Processing...</span>
+            </p>
+        </div>
+        <div class="text-center">
+            <a id="download-link" href="/download/{{ task_id }}" class="hidden bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition duration-300">
+                Download Anki Cards
+            </a>
+        </div>
+    </div>
+</body>
+</html>
