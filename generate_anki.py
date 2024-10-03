@@ -82,7 +82,6 @@ def generate_anki(input_data: Union[str, StringIO], num_cards: int, is_file: boo
     # Create a StringIO object to hold the CSV data
     csv_buffer = StringIO()
     csv_writer = csv.writer(csv_buffer)
-    csv_writer.writerow(['Question', 'Answer'])  # Header
     for card in all_anki_cards:
         csv_writer.writerow([card.question, card.answer])
     
